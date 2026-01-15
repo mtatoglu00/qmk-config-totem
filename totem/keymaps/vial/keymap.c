@@ -30,6 +30,8 @@ enum totem_layers {
     _ADJUST,
 };
 
+const key_override_t *key_overrides[] = {NULL};
+
 // ┌─────────────────────────────────────────────────┐
 // │ d e f i n e   k e y c o d e s                   │
 // └─────────────────────────────────────────────────┘
@@ -215,7 +217,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 } else {
                     keymap_config.swap_lctl_lgui = false; // ─── WIN
                 }
-                eeconfig_update_keymap(keymap_config.raw);
+                eeconfig_update_keymap(&keymap_config);
                 clear_keyboard(); // ──── clear to prevent stuck keys
                 return false;
             }
